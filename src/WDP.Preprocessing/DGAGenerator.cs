@@ -22,7 +22,7 @@ namespace WDP.Preprocessing
                     for (int j=0;j<currentBin.Bids.Count;j++)
                     {
                         var bid = currentBin.Bids[j];
-                        string line = string.Format("[[{0}],{1},{2}]", bid,bid.Value.ToString(CultureInfo.InvariantCulture), nextBin);
+                        string line = string.Format("[{0},{1},{2}]", bid,bid.Value.ToString(CultureInfo.InvariantCulture), nextBin);
                         tw.Write(line);
                         if (i != bins.Count - 2 || j< currentBin.Bids.Count-1)
                             tw.Write(tw.NewLine);

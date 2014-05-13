@@ -17,3 +17,11 @@ C:\Users\liannetr\Documents\Visual Studio 2012\Projects\WDP\WDP.BidsGeneration\o
 C:\Projects\WDP\wdp_cats_generator\WDP.BidsGeneration\bin\Debug\WDP.BidsGeneration.exe.config
 C:\Projects\WDP\wdp_cats_generator\WDP.BidsGeneration\obj\Debug\WDP.BidsGeneration.exe
 C:\Projects\WDP\wdp_cats_generator\WDP.BidsGeneration\obj\Debug\WDP.BidsGeneration.pdb
+C:\Projects\WDP\wdp_cats_generator\wdp_cats_generator\src\WDP.BidsGeneration\bin\Debug\WDP.BidsGeneration.exe.config
+C:\Projects\WDP\wdp_cats_generator\wdp_cats_generator\src\WDP.BidsGeneration\obj\Debug\WDP.BidsGeneration.exe
+C:\Projects\WDP\wdp_cats_generator\wdp_cats_generator\src\WDP.BidsGeneration\obj\Debug\WDP.BidsGeneration.pdb
+C:\Projects\WDP\wdp_cats_generator\wdp_cats_generator\src\WDP.BidsGeneration\bin\Debug\WDP.BidsGeneration.exe
+C:\Projects\WDP\wdp_cats_generator\wdp_cats_generator\src\WDP.BidsGeneration\bin\Debug\WDP.BidsGeneration.pdb
+C:\Projects\WDP\wdp_cats_generator\wdp_cats_generator\src\WDP.BidsGeneration\bin\Debug\WDP.Preprocessing.dll
+C:\Projects\WDP\wdp_cats_generator\wdp_cats_generator\src\WDP.BidsGeneration\bin\Debug\WDP.Preprocessing.pdb
+C:\Projects\WDP\wdp_cats_generator\wdp_cats_generator\src\WDP.BidsGeneration\obj\Debug\WDP.BidsGeneration.csprojResolveAssemblyReference.cache
