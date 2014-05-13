@@ -1,0 +1,10 @@
+c:\Users\lreyes\documents\visual studio 2012\Projects\WDP\WDP.Preprocessing\bin\Debug\WDP.Preprocessing.dll
+c:\Users\lreyes\documents\visual studio 2012\Projects\WDP\WDP.Preprocessing\bin\Debug\WDP.Preprocessing.pdb
+c:\Users\lreyes\documents\visual studio 2012\Projects\WDP\WDP.Preprocessing\obj\Debug\WDP.Preprocessing.csprojResolveAssemblyReference.cache
+c:\Users\lreyes\documents\visual studio 2012\Projects\WDP\WDP.Preprocessing\obj\Debug\WDP.Preprocessing.dll
+c:\Users\lreyes\documents\visual studio 2012\Projects\WDP\WDP.Preprocessing\obj\Debug\WDP.Preprocessing.pdb
+C:\Users\liannetr\Documents\Visual Studio 2012\Projects\WDP\WDP.Preprocessing\bin\Debug\WDP.Preprocessing.dll
+C:\Users\liannetr\Documents\Visual Studio 2012\Projects\WDP\WDP.Preprocessing\bin\Debug\WDP.Preprocessing.pdb
+C:\Users\liannetr\Documents\Visual Studio 2012\Projects\WDP\WDP.Preprocessing\obj\Debug\WDP.Preprocessing.csprojResolveAssemblyReference.cache
+C:\Users\liannetr\Documents\Visual Studio 2012\Projects\WDP\WDP.Preprocessing\obj\Debug\WDP.Preprocessing.dll
+C:\Users\liannetr\Documents\Visual Studio 2012\Projects\WDP\WDP.Preprocessing\obj\Debug\WDP.Preprocessing.pdb
