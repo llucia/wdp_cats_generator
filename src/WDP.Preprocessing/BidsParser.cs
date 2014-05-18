@@ -12,7 +12,7 @@ namespace WDP.Preprocessing
     {
         public static WDPInput Parse(string path)
         {
-            var wdpInput = new WDPInput(){Bids=new List<Bid>()};
+            var wdpInput = new WDPInput() { Bids = new List<Bid>() };
             return new WDPInput()
             {
                 Bids = new List<Bid>()
@@ -26,7 +26,7 @@ namespace WDP.Preprocessing
                 },
                 NumberOfGoods = 6,
                 NumberOfBids = 5,
-                NumberOfDummy=0
+                NumberOfDummy = 0
             };
 
             //using (TextReader rdr = new StreamReader(path))
@@ -35,7 +35,7 @@ namespace WDP.Preprocessing
             //    while ((line = rdr.ReadLine()) != null)
             //    {
             //        if (line.StartsWith("%") || string.IsNullOrEmpty(line)) continue;
-            //        var split = line.Split(' ','\t');
+            //        var split = line.Split(' ', '\t');
             //        var label = split[0];
             //        switch (label)
             //        {
@@ -45,19 +45,19 @@ namespace WDP.Preprocessing
             //        }
             //        try
             //        {
-            //            var bid = new Bid {Value = double.Parse(split[1],CultureInfo.InvariantCulture), Goods = new List<long>()};
-            //            for (var i = 2; i < split.Length-1; i++)
+            //            var bid = new Bid { Value = double.Parse(split[1], CultureInfo.InvariantCulture), Goods = new List<long>() };
+            //            for (var i = 2; i < split.Length - 1; i++)
             //                bid.Goods.Add(long.Parse(split[i]));
             //            wdpInput.Bids.Add(bid);
             //        }
             //        catch
             //        {
-            //            Console.WriteLine("Error parsing line "+line);
+            //            Console.WriteLine("Error parsing line " + line);
             //        }
             //    }
             //}
 
-            // return wdpInput;
+            return wdpInput;
         }
     }
 }

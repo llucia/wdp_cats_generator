@@ -10,9 +10,9 @@ namespace WDP.Preprocessing
 {
     public class DGAGenerator
     {
-        public static void GenerateGraph(List<Bin> bins)
+        public static void GenerateGraph(List<Bin> bins,string path)
         {
-            using (TextWriter tw = File.CreateText("dga_output.txt"))
+            using (TextWriter tw = File.CreateText(path))
             {
                 int i = 0;
                 while (i<bins.Count-1)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,7 +15,6 @@ namespace WDP.Preprocessing
         }
         public List<long> Goods { get; set; }
         public double Value { get; set; }
-
         public long MinimumGood()
         {
             return Goods.Min();
@@ -22,14 +22,15 @@ namespace WDP.Preprocessing
 
         public override string ToString()
         {
-            string result = "[";
+            StringBuilder sb = new StringBuilder();
+            sb.Append("[");
             for(int i=0; i<Goods.Count;i++)
             {
-                if (i > 0) result += ",";
-                result += Goods[i];
+                if (i > 0) sb.Append(",");
+                sb.Append(Goods[i]);
             }
-            result += "]";
-            return result;
+            sb.Append("]");
+            return sb.ToString();
         }
     }
 }

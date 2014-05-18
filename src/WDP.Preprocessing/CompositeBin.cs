@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace WDP.Preprocessing
 {
@@ -17,14 +18,15 @@ namespace WDP.Preprocessing
         public List<CompositeBid> Bids { get; set; }
         public override string ToString()
         {
-            string result = "[";
+            StringBuilder sb = new StringBuilder();
+            sb.Append("[");
             for (int i = 0; i < Bids.Count; i++)
             {
-                if (i > 0) result += ",";
-                result += Bids[i].ToString();
+                if (i > 0) sb.Append(",");
+                sb.Append(Bids[i]);
             }
-            result += "]";
-            return result;
+            sb.Append("]");
+            return sb.ToString();
         }
     }
 }

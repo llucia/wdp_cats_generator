@@ -11,11 +11,22 @@ namespace WDP.BidsGeneration
     {
         static void Main(string[] args)
         {
-            string path = @"C:\Program Files\CATS-windows\0000.txt";
-            var wdpInput =  BidsParser.Parse(path);
+            string path = "C:/Users/liannetr/Desktop/wdp cats/";
+            Console.WriteLine("Enter input file");
+            string input=path+Console.ReadLine();
+            Console.WriteLine("Enter output path");
+            string output=path+Console.ReadLine();
+            var startDate = DateTime.Now;
+            Console.WriteLine(startDate+"Starting..");
+            var wdpInput =  BidsParser.Parse(input);
             var bins = BaseGenerator.GetBins(wdpInput);
-            DGAGenerator.GenerateGraph(bins);
-            FGAGenerator.GenerateGraph(bins);
+            Console.WriteLine("Generating DGA file");
+           // DGAGenerator.GenerateGraph(bins,output+"dga_"+wdpInput.NumberOfGoods+"_"+wdpInput.NumberOfBids+".txt");
+            FGAGenerator.GenerateGraph(bins, output + "fga_" + wdpInput.NumberOfGoods + "_" + wdpInput.NumberOfBids + ".txt");
+            var endDate = DateTime.Now;
+            Console.WriteLine(endDate+ " END!");
+            Console.WriteLine("Total time " + (endDate-startDate));
+            Console.ReadLine();
 
         }
     }

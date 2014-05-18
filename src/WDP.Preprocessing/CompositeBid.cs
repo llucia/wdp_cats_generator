@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 
 namespace WDP.Preprocessing
 {
@@ -26,24 +27,24 @@ namespace WDP.Preprocessing
         }
         public override string ToString()
         {
-
-            string result = "[";
+            StringBuilder sb = new StringBuilder();
+            sb.Append("[");
             for (int j = 0; j < Goods.Count; j++)
             {
-                if (j > 0) result += ",";
+                if (j > 0) sb.Append(",");
 
-                result += "[";
+                sb.Append("[");
                 for (int i = 0; i < Goods[j].Count; i++)
                 {
-                    if (i > 0) result += ",";
-                    result += Goods[j][i];
+                    if (i > 0) sb.Append(",");
+                    sb.Append(Goods[j][i]);
                 }
-                result += "]";
+                sb.Append("]");
             }
             
-            result += "]";
+            sb.Append("]");
 
-            return result;
+            return sb.ToString();
         }
     }
 }
