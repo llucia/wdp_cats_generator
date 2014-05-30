@@ -13,3 +13,5 @@ C:\Projects\WDP\wdp_cats_generator\wdp_cats_generator\src\WDP.Preprocessing\bin\
 C:\Projects\WDP\wdp_cats_generator\wdp_cats_generator\src\WDP.Preprocessing\obj\Debug\WDP.Preprocessing.csprojResolveAssemblyReference.cache
 C:\Projects\WDP\wdp_cats_generator\wdp_cats_generator\src\WDP.Preprocessing\obj\Debug\WDP.Preprocessing.dll
 C:\Projects\WDP\wdp_cats_generator\wdp_cats_generator\src\WDP.Preprocessing\obj\Debug\WDP.Preprocessing.pdb
+C:\Projects\WDP\wdp_cats_generator\wdp_cats_generator\src\WDP.Preprocessing\bin\Debug\Newtonsoft.Json.dll
+C:\Projects\WDP\wdp_cats_generator\wdp_cats_generator\src\WDP.Preprocessing\bin\Debug\Newtonsoft.Json.xml

@@ -14,6 +14,7 @@ namespace WDP.Preprocessing
     {
         public static void GenerateGraph(List<Bin> bins, string output)
         {
+            var chunkSize = 200000000;//200MB
             var currentPath = "current.txt";
             var nextPath = "next.txt";
             string line;
@@ -26,59 +27,49 @@ namespace WDP.Preprocessing
                 foreach (var bid in currentBin.Bids)
                     writer.WriteLine(JsonConvert.SerializeObject(bid));
             }
-
-            using (StreamWriter tw = new StreamWriter(output))
+            int chunk = 1;
+            StreamWriter tw;
+            tw = new StreamWriter(output + chunk + ".txt");
+            int i = 1;
+            while (i < bins.Count)
             {
-                int i = 1;
-                while (i < bins.Count)
+                using (StreamWriter tempWriter = new StreamWriter(nextPath))
                 {
-                    using (StreamWriter tempWriter = new StreamWriter(nextPath))
+                    using (TextReader reader = File.OpenText(currentPath))
                     {
-                        using (TextReader reader = File.OpenText(currentPath))
+                        while ((line = reader.ReadLine()) != null)
                         {
-                            while ((line = reader.ReadLine()) != null)
-                            {
-                                bidTmp = JsonConvert.DeserializeObject<CompositeBid>(line);
-                                newBids = bins[i].Bids.Select(b => bidTmp.Concat(b)).ToList();
-                                if (newLine)tw.Write(tw.NewLine);else newLine = true;
-                                tw.Write("[{0},{1},[{2}]]", bidTmp, bidTmp.Value, Print(newBids));
-                                tw.Flush();
-                                foreach (var compositeBid in newBids)
-                                 tempWriter.WriteLine(JsonConvert.SerializeObject(compositeBid));   
+                            bidTmp = JsonConvert.DeserializeObject<CompositeBid>(line);
+                            newBids = bins[i].Bids.Select(b => bidTmp.Concat(b)).ToList();
+                            if (newLine) tw.Write(tw.NewLine);
+                            else newLine = true;
+                            tw.Write("[{0},{1},[{2}]]", bidTmp, bidTmp.Value, Print(newBids));
+                            foreach (var compositeBid in newBids)
+                                tempWriter.WriteLine(JsonConvert.SerializeObject(compositeBid));
 
+                            if (tw.BaseStream.Length > chunkSize)
+                            {
+                                tw.Flush();
+                                tw.Close();
+                                chunk++;
+                                tw = new StreamWriter(output + chunk + ".txt");
+                                newLine = false;
                             }
                         }
-                        File.Create(currentPath).Close();
-                        var temp = currentPath;
-                        currentPath = nextPath;
-                        nextPath = temp;
-                        i++;
+                        
                     }
+                    File.Create(currentPath).Close();
+                    var temp = currentPath;
+                    currentPath = nextPath;
+                    nextPath = temp;
+                    i++;
                 }
             }
-            //using (TextWriter tw = File.CreateText(output))
-            //{
-            //    var currentBin =new CompositeBin(bins[0]);
-            //    int i = 1;
-            //    while (i < bins.Count)
-            //    {
-            //        var nextBin = bins[i];
-            //        var tmpBin = new CompositeBin();
-            //        foreach (var bid in currentBin.Bids)
-            //        {
-            //            var newBids = nextBin.Bids.Select(b => bid.Concat(b)).ToList();
-            //            tw.Write(string.Format("[{0},{1},[{2}]]",bid,bid.Value,Print(newBids)));
-            //            tmpBin.Bids.AddRange(newBids);
-            //            if (i != bins.Count - 1 || bid !=currentBin.Bids.Last())
-            //                tw.Write(tw.NewLine);
-            //        }
-                    
-            //        i++;
-            //        currentBin = tmpBin;
-            //    }
-            //}
+            tw.Flush();
+            tw.Close();
         }
 
+        
         private static object Print(List<CompositeBid> newBids)
         {
             StringBuilder sb = new StringBuilder();

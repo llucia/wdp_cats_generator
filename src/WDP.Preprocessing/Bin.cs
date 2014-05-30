@@ -24,5 +24,35 @@ namespace WDP.Preprocessing
             sb.Append("]");
             return sb.ToString();
         }
+        public  string ToDMAString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("[");
+            for (int i = 0; i < Bids.Count; i++)
+            {
+                if (i > 0) sb.Append(",");
+                sb.Append(Bids[i].Id);
+            }
+            sb.Append("]");
+            return sb.ToString();
+        }
+        public string Encoded()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("[");
+            for (int i = 0; i < Bids.Count; i++)
+            {
+                if (i > 0) sb.Append(",");
+                sb.Append(Bids[i].Encoded());
+            }
+            sb.Append("]");
+            return sb.ToString();
+        }
+
+        internal void EncodeBids(int m)
+        {
+            foreach (var bid in Bids)
+                bid.EncodeBid(m);
+        }
     }
 }
