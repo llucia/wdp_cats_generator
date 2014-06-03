@@ -13,8 +13,10 @@ namespace WDP.Preprocessing
         {
             Goods = new List<long>();
         }
+        
         public List<long> Goods { get; set; }
         public long[] EncodedGoods { get; set; }
+        public long PartitionId { get; set; }
 
         public long Id { get; set; }
         public double Value { get; set; }
@@ -48,6 +50,21 @@ namespace WDP.Preprocessing
             sb.Append("]");
             return sb.ToString();
             
+        }
+
+        public string LongEncoded()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("[");
+            sb.Append(PartitionId);
+            for (int i = 0; i < EncodedGoods.Length; i++)
+            {
+                sb.Append(",");
+                sb.Append(EncodedGoods[i]);
+            }
+            sb.Append("]");
+            return sb.ToString();
+
         }
 
         internal void EncodeBid(int m)

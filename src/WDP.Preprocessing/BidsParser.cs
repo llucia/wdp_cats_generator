@@ -45,7 +45,7 @@ namespace WDP.Preprocessing
                     }
                     try
                     {
-                        var bid = new Bid { Value = double.Parse(split[1], CultureInfo.InvariantCulture), Goods = new List<long>() };
+                        var bid = new Bid {Id =long.Parse(split[0]),  Value = double.Parse(split[1], CultureInfo.InvariantCulture), Goods = new List<long>() };
                         for (var i = 2; i < split.Length - 1; i++)
                             bid.Goods.Add(long.Parse(split[i]));
                         wdpInput.Bids.Add(bid);

@@ -49,6 +49,19 @@ namespace WDP.Preprocessing
             return sb.ToString();
         }
 
+        public string LongEncoded()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("[");
+            for (int i = 0; i < Bids.Count; i++)
+            {
+                if (i > 0) sb.Append(",");
+                sb.Append(Bids[i].LongEncoded());
+            }
+            sb.Append("]");
+            return sb.ToString();
+        }
+
         internal void EncodeBids(int m)
         {
             foreach (var bid in Bids)

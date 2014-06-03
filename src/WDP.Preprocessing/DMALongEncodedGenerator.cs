@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace WDP.Preprocessing
 {
-    public class DMAEncodedGenerator
+    public class DMALongEncodedGenerator
     {
         public static void GenerateGraph(List<Bin> bins,int numberOfGoods,int numberOfDummies,string output)
         {
@@ -43,8 +43,12 @@ namespace WDP.Preprocessing
                 tempWriter.WriteLine("# MB Required: " +(totalVertexBytes+totalMsgBytes+totalEdgesBytes)/(1024*1024d) );
             }
 
+            int partitionId = 0;
             foreach (var bin in bins)
+            {
                 bin.EncodeBids(numberOfGoods+numberOfDummies);
+                bin.Bids.ForEach(bid=>bid.PartitionId=partitionId++);
+            }
 
             var chunkSize = 200000000;//200MB
             int chunk = 1;
@@ -59,7 +63,7 @@ namespace WDP.Preprocessing
                     for (int j=0;j<currentBin.Bids.Count;j++)
                     {
                         var bid = currentBin.Bids[j];
-                        string line = string.Format("[{0},{1},{2}]", bid.Encoded(),bid.Value.ToString(CultureInfo.InvariantCulture), nextBin.Encoded());
+                        string line = string.Format("[{0},{1},{2},{3}]",bid.PartitionId, bid.Encoded(),bid.Value.ToString(CultureInfo.InvariantCulture), nextBin.LongEncoded());
                         if (newLine) tw.Write(tw.NewLine);
                         else newLine = true;
                         tw.Write(line);

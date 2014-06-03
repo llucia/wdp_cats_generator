@@ -46,6 +46,8 @@
     <Compile Include="Bid.cs" />
     <Compile Include="CompositeBid.cs" />
     <Compile Include="CompositeBin.cs" />
+    <Compile Include="DMALongEncodedGenerator.cs" />
+    <Compile Include="DMAEncodedWithBidsGenerator.cs" />
     <Compile Include="DMAEncodedGenerator.cs" />
     <Compile Include="DMAGenerator.cs" />
     <Compile Include="DGAGenerator.cs" />

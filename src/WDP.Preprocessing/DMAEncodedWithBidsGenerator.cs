@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace WDP.Preprocessing
 {
-    public class DMAEncodedGenerator
+    public class DMAEncodedWithBidsGenerator
     {
         public static void GenerateGraph(List<Bin> bins,int numberOfGoods,int numberOfDummies,string output)
         {
@@ -34,13 +34,11 @@ namespace WDP.Preprocessing
                     ind++;
                 });
                 tempWriter.WriteLine("# bids total: " + total);
-                double totalMsgBytes = ((numberOfDummies + numberOfGoods)/8d + 24)*n1nk;
-                double totalEdgesBytes = ((numberOfDummies + numberOfGoods) / 8d + 16) * n1nk;
-                double totalVertexBytes = total*((numberOfGoods + numberOfDummies)/8d+16);
+                double totalMsgBytes = ((numberOfDummies + numberOfGoods)/8d + 16)*n1nk;
+                double totalVertexBytes = total*((numberOfGoods + numberOfDummies)/8d+8);
+                tempWriter.WriteLine("# Message Bytes Required: " +totalMsgBytes );
                 tempWriter.WriteLine("# Vertex Bytes Required: " +totalVertexBytes );
-                tempWriter.WriteLine("# Edges Bytes Required: " + totalEdgesBytes);
-                tempWriter.WriteLine("# Messages Bytes Required: " + totalMsgBytes);
-                tempWriter.WriteLine("# MB Required: " +(totalVertexBytes+totalMsgBytes+totalEdgesBytes)/(1024*1024d) );
+                tempWriter.WriteLine("# MB Required: " +(totalVertexBytes+totalMsgBytes)/(1024*1024d) );
             }
 
             foreach (var bin in bins)
@@ -59,7 +57,7 @@ namespace WDP.Preprocessing
                     for (int j=0;j<currentBin.Bids.Count;j++)
                     {
                         var bid = currentBin.Bids[j];
-                        string line = string.Format("[{0},{1},{2}]", bid.Encoded(),bid.Value.ToString(CultureInfo.InvariantCulture), nextBin.Encoded());
+                        string line = string.Format("[{0},{1},{2},{3}]", bid.Encoded(),bid.Id,bid.Value.ToString(CultureInfo.InvariantCulture), nextBin.Encoded());
                         if (newLine) tw.Write(tw.NewLine);
                         else newLine = true;
                         tw.Write(line);

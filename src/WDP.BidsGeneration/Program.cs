@@ -11,15 +11,15 @@ namespace WDP.BidsGeneration
     {
         static void Main(string[] args)
         {
-            string path = "C:/Users/liannetr/Desktop/wdp cats/";
+            string path = "C:/Users/liannetr/Desktop/wdp cats/tesis tests/";
             Console.WriteLine("Enter input file");
             string input=path+Console.ReadLine();
             Console.WriteLine("Enter output path");
             string output=path+Console.ReadLine();
             var startDate = DateTime.Now;
             var wdpInput =  BidsParser.Parse(input);
-            var bins = BaseGenerator.GetBins(wdpInput);
-            Console.WriteLine("Choose an algorithm: 0-FGA, 1-DGA, 2-DMA encoded, 3-DMA long");
+            var bins = BaseGenerator.GetBinsHeuristic(wdpInput);
+            Console.WriteLine("Choose an algorithm: 0-FGA, 1-DGA, 2-DMA encoded, 3-DMA long, 4-DMA encoded with bids");
             var algorithm = Console.ReadLine();
             Console.WriteLine(startDate+"Starting..");
             
@@ -44,7 +44,17 @@ namespace WDP.BidsGeneration
                 case "3":
                     Console.WriteLine(DateTime.Now + " Generating DMA Long file");
                     DMAGenerator.GenerateGraph(bins,
-                        output + "dma_long" + wdpInput.NumberOfGoods + "_" + wdpInput.NumberOfBids + "_");
+                        output + "dma_long_" + wdpInput.NumberOfGoods + "_" + wdpInput.NumberOfBids + "_");
+                    break;
+                case "4":
+                    Console.WriteLine(DateTime.Now + " Generating DMA Encoded with bids file");
+                    DMAEncodedWithBidsGenerator.GenerateGraph(bins, wdpInput.NumberOfGoods, wdpInput.NumberOfDummy,
+                        output + "dma_encodedWithBids_" + wdpInput.NumberOfGoods + "_" + wdpInput.NumberOfBids + "_");
+                    break;
+                case "5":
+                    Console.WriteLine(DateTime.Now + " Generating DMA Long Encoded file");
+                    DMALongEncodedGenerator.GenerateGraph(bins, wdpInput.NumberOfGoods, wdpInput.NumberOfDummy,
+                        output + "dma_longEncoded_" + wdpInput.NumberOfGoods + "_" + wdpInput.NumberOfBids + "_");
                     break;
                 case "x":
                     
